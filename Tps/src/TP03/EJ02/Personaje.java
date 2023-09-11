@@ -10,8 +10,16 @@ public class Personaje {
         return this.energia;
     }
 
-    public void modificarEnergia(int modif) {
-        this.energia = this.energia + modif;
+    public synchronized boolean modificarEnergia(int modif) {
+        boolean flag = modif >= 0 || this.energia > -modif;
+        if (flag) {
+            this.energia = this.energia + modif;
+            System.out.println(Thread.currentThread().getName()+" ha alterado la energia en "+ modif +".");
+            System.out.println("Energia actual: "+this.energia);
+        } else {
+            System.out.println("No hay energia. Energia actual: "+this.energia);
+        }
+        return flag;
     }
 
 }
