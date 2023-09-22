@@ -23,6 +23,7 @@ public class Taxi {
             e.printStackTrace();
         }
         //Avisa que esta ocupado
+        System.out.println("--- "+Thread.currentThread().getName()+" ha ocupado el Taxi "+this.id+" ---");
         this.semOcupado.release();
         //Finaliza el viaje si se llego a destino
         try {
@@ -42,6 +43,7 @@ public class Taxi {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("--- Taxi "+this.id+" llego a destino ---");
         this.semFinViaje.release();
     }
 
