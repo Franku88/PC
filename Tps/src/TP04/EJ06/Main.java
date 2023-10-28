@@ -10,12 +10,12 @@ public class Main {
         Pasajero[] pasajeros = new Pasajero[CANTIDAD];
         cargarPasajeros(pasajeros, taxi);
 
-        (new Thread(taxista)).start();
-
         for(int i = 0; i < pasajeros.length; i++){
             Thread h = new Thread(pasajeros[i], "P"+i);
             h.start();
         }
+
+        (new Thread(taxista)).start();
 
     }
 
