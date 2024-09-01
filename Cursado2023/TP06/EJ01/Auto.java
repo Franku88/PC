@@ -1,5 +1,3 @@
-
-
 public class Auto implements Runnable {
     private String patente;
     private String ingreso; //N: norte, S: sur

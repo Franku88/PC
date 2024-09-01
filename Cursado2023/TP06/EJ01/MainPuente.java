@@ -1,5 +1,3 @@
-
-
 public class MainPuente {
     public static void main(String[] args) {
         GestorTrafico gestor = new GestorTrafico();
