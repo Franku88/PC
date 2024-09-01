@@ -1,4 +1,4 @@
-package AOE;
+package AO03;
 
 public class MaquinaExpendedora {
     private int ticketsVendidos;
