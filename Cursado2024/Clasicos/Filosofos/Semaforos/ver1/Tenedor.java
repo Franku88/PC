@@ -1,4 +1,4 @@
-package Cursado2024.Clasicos.Filosofos;
+package Cursado2024.Clasicos.Filosofos.Semaforos.ver1;
 import java.util.concurrent.Semaphore;
 
 public class Tenedor {

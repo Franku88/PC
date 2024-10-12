@@ -1,4 +1,4 @@
-package Cursado2024.Clasicos.Filosofos;
+package Cursado2024.Clasicos.Filosofos.Semaforos.ver2;
 
 public class Main {
     public static void main(String[] args) {
