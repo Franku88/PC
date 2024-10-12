@@ -9,7 +9,8 @@ public class VerificarCuenta implements Runnable {
     public void run() {
         for(int i = 0; i<4; i++){
             try {
-                if (cb.hacerRetiro(10)) {
+                cb.hacerRetiro(10);
+                if (cb.getBalance() < 0) {
                     System.out.println("La cuenta está sobregirada.");
                 }
             } catch (InterruptedException ex) {

@@ -1,0 +1,27 @@
+Apuntes o datos importantes:
+
+-. Sección crítica: porción de código con variables compartidas y que debe ejecutarse en exclusión mutua
+-. Exclusión mutua, si un proceso está en su sección crítica, entonces ningún otro proceso puede ejecutar su sección crítica
+-. Sincronización por competencia, con aplicación de mecanismos de exclusión mutua se logra la sincronización entre los procesos que compiten por un recurso.
+-. Cuando un hilo intenta obtener un lock no disponible, espera a que si lo esté (se bloquea)
+-. Se debe sincronizar el recurso compartido, diferenciando la sección crítica (con synchronized).
+
+-. Los que comparten el recurso son los hilos/runnables.
+-. Los hilos/runnables deben implementar el run utilizando (o no) el recurso compartido.
+-. Hilos/runnables son iniciados desde un main mediante start() (no usar run()).
+-. Para que el main espere a los hilos, es posible utilizar join() sobre cada hilo a esperar, dentro de un try-catch.
+
+-. Los semaforos son utilizados en el recurso compartido
+-. Los semaforos binarios tienen solo 1 permiso inicial.
+-. Los permisos de semaforos son adquiridos (uso directo de acquire/release) dentro del recurso compartido.
+-. Tambien los mensajes de salida (dentro del recurso, cuando se realiza acquire/release)
+-. Utilizar semaforos como "notificadores" a quienes quedan esperando por el mismo
+-. Si un hilo necesita un permiso, quedara esperando a que el mismo sea brindado (ej. por otro proceso)
+
+-. Los hilos no usan directamente acquire/release (utilizan metodos de los recursos compartidos) (podrian pero deben acceder a los semaforos -[Responsabilidades]-)
+-. Simular tiempos de uso en los hilos? (no estoy seguro, creo que se debe realizar en el recurso)
+    -. Pensarlo como: el que se toma el tiempo, es el que simula el tiempo (generalmente el recurso se toma el tiempo)
+    -. En cualquier caso, deberia funcionar (si esta hecho dentro de la seccion critica, debe ser coherente el funcionamiento)
+
+-. Utilizar 1 semaforo por variable (o para varias dependiendo el caso)
+
