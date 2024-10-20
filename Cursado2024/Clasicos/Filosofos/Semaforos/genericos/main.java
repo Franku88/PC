@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Cursado2024.Clasicos.Filosofos.Semaforos.genericos;
-import java.util.concurrent.Semaphore;
 /**
  *
  * @author Usuario
