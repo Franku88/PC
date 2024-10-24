@@ -54,11 +54,11 @@ public class GestorComedor {
         this.mutex.release();
 
         this.accesoPerro.acquire(); //Acceden hasta limite, si no, esperan (da el tiempo donde se realiza el cambio de turno)
-        this.comederos.acquire(); //Adquiere comedero
+        this.comederos.acquire(); //Adquiere comedero //Adquiere 2 para el ej4
         
         this.mutex.acquire(); //Deja de esperar y ocupa plato
         this.perrosEsperando--;
-        this.platosEnUso++;
+        this.platosEnUso++; //Aumenta 2 para el ej4
         this.mutex.release();
     }
 
@@ -84,8 +84,8 @@ public class GestorComedor {
         this.mutex.acquire();
 
         this.perrosQueComieron++; //aumenta contador  
-        this.platosEnUso--; //comedero, disminuye contador
-        this.comederos.release(); //comedero,libera permiso
+        this.platosEnUso--; //comedero, disminuye contador //Disminuye 2 para el ej4
+        this.comederos.release(); //comedero,libera permiso //Libera 2 para el ej4
 
         if (this.platosEnUso == 0) { //Si era ultimo en dejar de comer
             if (this.perrosQueComieron%this.limite == 0) {
