@@ -158,3 +158,11 @@ public class GestorComedor {
         this.mutex.release();
     }
 }
+
+/*4. La protectora de Animales se dió cuenta que los perros comen más cantidad de alimento que los gatos, por lo que, como solución a su problema proponen darle 2 raciones de
+alimento a los perros (es decir, que cada perro ocupa 2 comederos) y los gatos siguen con una sola ración. Encuentre una solución óptima al nuevo problema planteado.
+a. ¿Qué sucede cuando la cantidad de comederos es impar?
+    Suponiendo que la solucion propuesta, permita ingresar a un perro solo cuando esten 2 platos libres, 
+    ocurre que un perro quedara esperando a que se desocupe al menos 1 plato (1 permiso) para empezar a comer.
+b. ¿Cómo solucionaría ese problema sin agregar o quitar comederos?
+    Que ocupe 1 plato a la vez (tomando solo un permiso por vez), y que coma dos veces seguidas. */
