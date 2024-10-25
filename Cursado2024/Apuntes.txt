@@ -18,10 +18,10 @@ Apuntes o datos importantes:
 -. Utilizar semaforos como "notificadores" a quienes quedan esperando por el mismo
 -. Si un hilo necesita un permiso, quedara esperando a que el mismo sea brindado (ej. por otro proceso)
 
--. Los hilos no usan directamente acquire/release (utilizan metodos de los recursos compartidos) (podrian pero deben acceder a los semaforos -[Responsabilidades]-)
--. Simular tiempos de uso en los hilos? (no estoy seguro, creo que se debe realizar en el recurso)
-    -. Pensarlo como: el que se toma el tiempo, es el que simula el tiempo (generalmente el recurso se toma el tiempo)
-    -. En cualquier caso, deberia funcionar (si esta hecho dentro de la seccion critica, debe ser coherente el funcionamiento)
+-. Los hilos no usan directamente acquire/release (utilizan metodos de los recursos compartidos) (podrian pero deben acceder a los semaforos [Responsabilidades])
+-. Simular tiempos de uso en los hilos? (no estoy seguro, creo que se debe realizar en el recurso ¿MAL?) 
+    -. En cualquier caso, deberia funcionar (si esta hecho dentro de la seccion critica, debe ser coherente el funcionamiento (SUPOSICION))
+        -. NOTA: APARENTEMENTE ES INCORRECTO SIMULAR EL TIEMPO DENTRO DEL RECURSO (LOS HILOS DEBEN REALIZAR EL SLEEP)
 
--. Utilizar 1 semaforo por variable (o para varias dependiendo el caso)
+-. Utilizar 1 semaforo por variable (o para varias dependiendo de que formas van a ser accedidas)
 
