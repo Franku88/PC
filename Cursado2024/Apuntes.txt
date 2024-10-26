@@ -1,5 +1,6 @@
 Apuntes o datos importantes:
 
+# CONCURRENCIA
 -. Sección crítica: porción de código con variables compartidas y que debe ejecutarse en exclusión mutua
 -. Exclusión mutua, si un proceso está en su sección crítica, entonces ningún otro proceso puede ejecutar su sección crítica
 -. Sincronización por competencia, con aplicación de mecanismos de exclusión mutua se logra la sincronización entre los procesos que compiten por un recurso.
@@ -11,6 +12,7 @@ Apuntes o datos importantes:
 -. Hilos/runnables son iniciados desde un main mediante start() (no usar run()).
 -. Para que el main espere a los hilos, es posible utilizar join() sobre cada hilo a esperar, dentro de un try-catch.
 
+# SEMAFOROS
 -. Los semaforos son utilizados en el recurso compartido
 -. Los semaforos binarios tienen solo 1 permiso inicial.
 -. Los permisos de semaforos son adquiridos (uso directo de acquire/release) dentro del recurso compartido.
