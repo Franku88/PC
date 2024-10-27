@@ -27,3 +27,6 @@ Apuntes o datos importantes:
 
 -. Utilizar 1 semaforo por variable (o para varias dependiendo de que formas van a ser accedidas)
 
+-. Contadores para: 
+    - Los que esperan en cada caso (IZQ, DER, ARRIBA, ABAJO, etc)
+    - Los que estan usando el recurso actualmente (O TOMARON UN PERMISO) para resolver cada if al terminar una accion.
