@@ -30,3 +30,35 @@ Apuntes o datos importantes:
 -. Contadores para: 
     - Los que esperan en cada caso (IZQ, DER, ARRIBA, ABAJO, etc)
     - Los que estan usando el recurso actualmente (O TOMARON UN PERMISO) para resolver cada if al terminar una accion.
+
+# MONITORES
+-. Estructura de datos con todos los métodos sincronizados y los atributos privados. 
+-. Java no provee una clase MONITOR, pero logra “la semántica de monitor” por la utilización de bloqueos intrínsecos, con el patrón synchronized – wait – notify.
+    -. Es decir un monitor en Java se logra con la combinación de métodos sincronizados para lograr la exclusión mutua y el mecanismo de espera y notificación para lograr la
+    cooperación entre los hilos.
+
+-. Cada método que necesite de espera, debe ser syncronized y utilizar la combinacion wait()-notify()
+-. wait() se hace dentro de un while, ya que cuando una acción es resumida, la tarea en espera NO SABE si la condición por la que estaba esperando ahora se cumple, por lo que debe volver a verificar. 
+    -. Es buena práctica que esto se utilice aun cuando haya una única instancia que pueda esperar por la condición. 
+    -. Hay que tener en cuenta que un hilo que queda en el conjunto de espera de un monitor por efecto de una operación wait, LIBERA EL LOCK, luego permite que otros hilos comiencen a ejecutar cualquier método sincronizado del objeto. 
+    -. No olvidar que los métodos no sincronizados pueden ejecutarse sin restricciones.
+
+-. Para procesos sincronizados, debe realizarse el inicio/fin separados (en uno se realiza el while con el wait al verificar, y en el otro se realiza el notify)
+    -. Por esto, la simulacion del tiempo debe hacerse en el hilo (despues del metodoInicio y antes del metodoFin)
+
+# LOCKS Y VARIABLES DE CONDICION
+-. Locks explícitos en Java con la interfaz LOCK y una de sus implementaciones ReentrantLock. 
+-. ReentrantLock implementa la interfaz Lock permitiendo que un hilo que requiera un lock que ya tiene pueda volver a entrar a su sección crítica, por ser reentrante.
+
+-. Una variable de condición se asocia a un lock, y un hilo debe mantener el lock para poder esperar sobre la condición. 
+    -. De forma análoga a lo que sucede con los hilos que necesitan hacer un wait/notify sobre un objeto, que deben hacerlo dentro de un “synchronized”
+-. Obtenido el lock se chequea la condición, si es true el hilo continua y cuando corresponde libera el lock, si es false el hilo llama a await() sobre la variable de condición, la cual libera el lock y bloquea al hilo sobre esa variable de condición.     
+-. Cuando otro hilo llama a signal()/signalAll() (indicando que hubo cambios sobre la condición), el hilo en espera de un await() se desbloquea y vuelve a tomar el lock cuando sea su turno de CPU.
+-. Las operaciones await(), signal() y signalAll() se aplican sobre una variable de condición particular.
+-. Un mismo lock puede tener asociadas mas de 1 variable de condición. ¿Sucede lo mismo cuando se trabaja con locks implícitos y conjuntos de espera?
+-. USAR signalAll() SI MAS DE UNO DEBE ENTRAR A LA ESPERA DEL LOCK, YA QUE signal() SOLO DESPIERTA UN HILO.
+
+-. IMPORTANTE: a diferencia del mecanismo de métodos/bloques sincronizados, en el que la adquisición y liberación del lock estan implícitos, en el caso del uso de cerrojos, la adquisición 
+y liberación del lock es explicito, y pude ocurrir en alcances diferentes. Es decir un lock cerrojo puede ser adquirido en un método empezar() y ser liberado en otro método terminar() 
+    -. En monitores, no se aclara inicio y fin de seccion critica (pues synchronized realiza esto de forma implicita). En caso de locks, se obtiene y libera donde corresponde la seccion critica.
+
